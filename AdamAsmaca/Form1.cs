@@ -47,18 +47,17 @@ namespace AdamAsmaca
         {
             // Girdinin ilk harfinin küçük ve büyük harfinin alýnmasý, Kelime ise baþ harfinin büyütülmesi
             string girdi = textBox2.Text;
-            string ilkHarf = girdi.ToUpper().Substring(0);
+            string kelime = girdi.ToLower();
 
-            char ch = ilkHarf[0];
-            char ch2 = (char)(ch + 32);
+            char ch = kelime[0];
+            char ch2 = (char)(ch - 32);
 
-            string deneme = ch + girdi.Substring(1);
 
             string yazi = "";
 
 
             // Eðer deðer þehrin ismiyle aynýysa kazanma durumu
-            if (deneme.Equals(Isim))
+            if (kelime.Length > 1 && kelime.Equals(Isim.ToLower()))
             {
                 textBox.Text = Isim;
                 pictureBox1.Image = Resources.Bildin;
@@ -67,7 +66,7 @@ namespace AdamAsmaca
             }
 
             // Eðer deðer harf ise ve ismin içinde geçiyorsa listede yerine yazýlmasý
-            else if (Isim.Contains(ch) || Isim.Contains(ch2))
+            else if (kelime.Length == 1 && (Isim.Contains(ch) || Isim.Contains(ch2)))
             {
 
                 for (int i = 0; i < Isim.Length; i++)
@@ -99,7 +98,7 @@ namespace AdamAsmaca
             }
 
             //Eðer hatalý denemeyse hata sayýsýnýn arttýrýlmasý, hata sayýsýna göre resmin deðiþtirilmesi, Çok sayýda hata yapýlýrsa kaybetme durumu
-            else if (!Isim.Contains(ch) && !Isim.Contains(ch2))
+            else
             {
                 Hata++;
                 if (Hata == 1)
@@ -143,7 +142,7 @@ namespace AdamAsmaca
             // Þehirlerin listesi
             String[] sehirler = {"Adana","Adýyaman","Afyonkarahisar","Aðrý","Aksaray","Amasya","Ankara","Antalya","Ardahan","Artvin","Aydýn",
                     "Balýkesir","Bartýn","Batman","Bayburt","Bilecik","Bingöl","Bitlis","Bolu","Burdur","Bursa","Çanakkale","Çankýrý","Çorum","Denizli","Diyarbakýr",
-                    "Düzce","Edirne","Elazýð","Erzincan","Erzurum","Eskiþehir","Gaziantep","Giresun","Gümüþhane","Hakkari","Hatay","Iðdýr","Isparta","Ýstanbul","Ýzmir",
+                    "Düzce","Edirne","Elazýð","Erzincan","Erzurum","Eskiþehir","Gaziantep","Giresun","Gümüþhane","Hakkari","Hatay","Iðdýr","Isparta","Istanbul","Izmir",
                     "Kahramanmaraþ","Karabük","Karaman","Kars","Kastamonu","Kayseri","Kýrýkkale","Kýrklareli","Kýrþehir","Kilis","Kocaeli","Konya","Kütahya","Malatya","Manisa",
                     "Mardin","Mersin","Muðla","Muþ","Nevþehir","Niðde","Ordu","Osmaniye","Rize","Sakarya","Samsun","Siirt","Sinop","Sivas","Þanlýurfa","Þýrnak","Tekirdað","Tokat",
                     "Trabzon","Tunceli","Uþak","Van","Yalova","Yozgat","Zonguldak"};
