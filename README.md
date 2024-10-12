@@ -1,0 +1,2 @@
+- Şehirlerle oynanan Adam Asmaca oyunu
+- Form uygulaması şeklinde çalışmaktadır.
